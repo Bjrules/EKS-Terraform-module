@@ -1,4 +1,4 @@
-provider "aws" {
+ provider "aws" {
   region = "us-east-1"
 }
 
@@ -45,12 +45,12 @@ resource "aws_route_table" "banjo_route_table" {
 
 resource "aws_route_table_association" "a" {
   count          = 2
-  subnet_id      = aws_subnet.devopsshack_subnet[count.index].id
-  route_table_id = aws_route_table.devopsshack_route_table.id
+  subnet_id      = aws_subnet.banjo_subnet[count.index].id
+  route_table_id = aws_route_table.banjo_route_table.id
 }
 
-resource "aws_security_group" "devopsshack_cluster_sg" {
-  vpc_id = aws_vpc.devopsshack_vpc.id
+resource "aws_security_group" "banjo_cluster_sg" {
+  vpc_id = aws_vpc.banjo_vpc.id
 
   egress {
     from_port   = 0
@@ -64,8 +64,8 @@ resource "aws_security_group" "devopsshack_cluster_sg" {
   }
 }
 
-resource "aws_security_group" "devopsshack_node_sg" {
-  vpc_id = aws_vpc.devopsshack_vpc.id
+resource "aws_security_group" "banjo_node_sg" {
+  vpc_id = aws_vpc.banjo_vpc.id
 
   ingress {
     from_port   = 0
