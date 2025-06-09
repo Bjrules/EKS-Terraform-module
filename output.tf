@@ -1,5 +1,5 @@
 output "cluster_id" {
-  value = aws_eks_cluster.banjo.id
+  value = aws_eks_cluster.bj.id
 }
 
 output "node_group_id" {
